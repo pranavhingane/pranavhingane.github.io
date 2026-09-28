@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pranav Hingane | B.Tech CSE Student & Developer</title>
+  <meta name="description"
+    content="First-year B.Tech Computer Science student from Pune building practical software with Python, web technologies, and computer science fundamentals.">
+  <meta property="og:title" content="Pranav Hingane | B.Tech CSE Student & Developer">
+  <meta property="og:description"
+    content="First-year B.Tech CSE student building practical software and CS fundamentals.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0c0e;
+      --bg2: #111318;
+      --card: #15171c;
+      --border: #22252b;
+      --text: #eceef1;
+      --muted: #9aa1ac;
+      --accent: #5eb1ff;
+      --accent-dim: #5eb1ff22;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    code,
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(11, 12, 14, .85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: env(safe-area-inset-top, 0px) 0 0;
+    }
+
+    .navrow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 26px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .navlinks a:hover {
+      color: var(--text);
+    }
+
+    .resume-btn {
+      background: var(--accent);
+      color: #06111d;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 18px;
+    }
+
+    #mobileMenu {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px 0 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    #mobileMenu.open {
+      display: flex;
+    }
+
+    @media(max-width:720px) {
+      .navlinks {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 90px 0 70px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media(max-width:820px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 56px 0 40px;
+      }
+    }
+
+    .label {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .4px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 44px;
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -.5px;
+    }
+
+    @media(max-width:600px) {
+      h1 {
+        font-size: 32px;
+      }
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-top: 18px;
+      max-width: 52ch;
+    }
+
+    .ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      padding: 11px 20px;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #06111d;
+    }
+
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+    }
+
+    .social {
+      display: flex;
+      gap: 18px;
+      margin-top: 26px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .social a:hover {
+      color: var(--text);
+    }
+
+    .term {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .term-top {
+      display: flex;
+      gap: 6px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .term pre {
+      padding: 20px;
+      font-size: 13px;
+      color: #c7ccd4;
+      overflow-x: auto;
+    }
+
+    .term .k {
+      color: var(--accent);
+    }
+
+    .term .c {
+      color: #6fbf73;
+    }
+
+    /* SECTION */
+    section {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .4px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 32px;
+    }
+
+    @media(max-width:720px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .about-grid p {
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: .3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card ul {
+      list-style: none;
+      font-size: 14.5px;
+      color: var(--text);
+    }
+
+    .card li {
+      padding: 4px 0;
+    }
+
+    .card+.card {
+      margin-top: 14px;
+    }
+
+    /* PROJECTS */
+    .proj {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      margin-bottom: 20px;
+    }
+
+    .proj-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .proj-num {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      margin-bottom: 6px;
+    }
+
+    .proj h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .status {
+      font-size: 11.5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .proj p.tag {
+      color: var(--muted);
+      margin: 8px 0 16px;
+      font-size: 14.5px;
+    }
+
+    .blk {
+      margin-top: 14px;
+    }
+
+    .blk h4 {
+      font-size: 11.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .3px;
+      margin-bottom: 6px;
+    }
+
+    .blk ul {
+      list-style: none;
+      font-size: 14.5px;
+    }
+
+    .blk li {
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .blk li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .chip {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 12.5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .proj-links {
+      display: flex;
+      gap: 18px;
+      margin-top: 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+    }
+
+    .proj-links a {
+      color: var(--accent);
+    }
+
+    .placeholder {
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    /* TIMELINE */
+    .tl {
+      border-left: 2px solid var(--border);
+      padding-left: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .tl-item {
+      position: relative;
+    }
+
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tl-date {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .3px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tl-title {
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    /* LOG */
+    .log-item {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      display: flex;
+      gap: 16px;
+      font-size: 14.5px;
+    }
+
+    .log-item:last-child {
+      border-bottom: none;
+    }
+
+    .log-date {
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .contact h2 {
+      font-size: 30px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 46ch;
+      margin: 14px auto 26px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      font-size: 15px;
+    }
+
+    .contact-links a {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+    }
+
+    .contact-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0 calc(30px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer .flinks {
+      display: flex;
+      gap: 18px;
+    }
+
+    @media(prefers-reduced-motion:no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity .5s ease, transform .5s ease;
+      }
+
+      .reveal.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      .proj:hover,
+      .card:hover {
+        transform: translateY(-2px);
+        transition: transform .18s ease;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap navrow">
+      <a class="brand" href="#top">Pranav Hingane</a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="resume-btn" href="#" id="resumeLink">Resume</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+    <div class="wrap" id="mobileMenu">
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a>
+      <a href="#experience">Experience</a><a href="#contact">Contact</a>
+      <a class="resume-btn" style="width:fit-content" href="#" id="resumeLinkMobile">Download Resume</a>
+    </div>
+  </nav>
+
+  <header class="hero wrap" id="top">
+    <div>
+      <div class="label">B.TECH CSE STUDENT • PUNE, INDIA</div>
+      <h1>Building software, learning deeply, and shipping projects.</h1>
+      <p class="sub">I'm Pranav, a first year Computer Science &amp; Engineering student focused on building practical
+        software with Python and web technologies while strengthening my computer science fundamentals.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#" id="resumeLinkHero">Download Resume</a>
+      </div>
+      <div class="social">
+        <a href="https://github.com/pranavhingane" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/pranav-hingane-352793404/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:pranavhingane999@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="term">
+      <div class="term-top"><span class="dot" style="background:#ff5f57"></span><span class="dot"
+          style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span></div>
+      <pre><span class="k">$</span> who_am_i?
+Pranav Hingane
+
+<span class="k">$</span> focus
+DSA
+Python
+Web Development
+Computer Science Fundamentals
+
+<span class="k">$</span> currently_building
+<span class="c">Personal Finance Analytics System</span>
+
+<span class="k">$</span> status
+<span class="c">available for internships</span></pre>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow">ABOUT</div>
+      <h2>Learning by building.</h2>
+      <div class="about-grid">
+        <p>I'm building my foundations in Python, programming, web development, Git, and computer science fundamentals,
+          while gradually moving toward more advanced areas like backend development and eventually AI/ML.</p>
+        <div>
+          <div class="card">
+            <h3>Currently Learning</h3>
+            <ul>
+              <li>Achieved Mastery in Python</li>
+              <li>Data Structures &amp; Algorithms</li>
+              <li>Git / GitHub</li>
+              <li>Web Development</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Currently Building</h3>
+            <ul>
+              <li class="placeholder">Personal Finance Analytics System</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Looking For</h3>
+            <ul>
+              <li>Software Development / Engineering Internships</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow">PROJECTS</div>
+      <h2>What I've built</h2>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-num">PROJECT 01</div>
+            <h3>Billing Software in Python</h3>
+          </div>
+          <span class="status">Finished</span>
+        </div>
+        <p class="tag placeholder">A Python based billing application that automates item selection, quantity-based
+          pricing, and final bill calculation</p>
+        <div class="blk">
+          <h4>Problem</h4>
+          <p style="font-size:14.5px; color:var(--muted)" class="placeholder">Manual billing can lead to calculation
+            errors and inefficient processing of multiple items and quantities.</p>
+        </div>
+        <div class="blk">
+          <h4>What I Built</h4>
+          <ul>
+            <li class="placeholder">Implemented item selection and quantity based price calculation using Python control
+              flow logic</li>
+            <li class="placeholder">also Automated bill generation by processing multiple items and calculating the
+              final payable amount</li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>Stack</h4>
+          <div class="stack"><span class="chip">Python</span><span class="chip">Brain lol</span></div>
+        </div>
+        <div class="proj-links">
+          <a href="No GitHub Available yet" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="proj-top">
+          <div>
+            <div class="proj-num">PROJECT 02</div>
+            <h3>Personal Finance Analytics System</h3>
+          </div>
+          <span class="status">Experimental</span>
+        </div>
+        <p class="tag placeholder">A Python based application for recording, analyzing, and visualizing personal income
+          and expense data</p>
+        <div class="blk">
+          <h4>Problem</h4>
+          <p style="font-size:14.5px; color:var(--muted)" class="placeholder">Tracking expenses manually makes it
+            difficult to identify spending patterns, compare monthly expenses, and monitor savings </p>
+        </div>
+        <div class="blk">
+          <h4>What I Built</h4>
+          <ul>
+            <li class="placeholder">Developed functionality to record and categorize transactions and calculate monthly
+              spending patterns </li>
+            <li class="placeholder">Implemented data analysis and visualization to identify expense trends and provide a
+              clearer overview of personal finances </li>
+          </ul>
+        </div>
+        <div class="blk">
+          <h4>Stack</h4>
+          <div class="stack"><span class="chip">Python</span><span class="chip">Pandas</span></div>
+        </div>
+        <div class="proj-links">
+          <a href="No GitHub Available Yet" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">SKILLS</div>
+      <h2>What I work with</h2>
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <ul>
+            <li>Python</li>
+            <li>JavaScript</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <ul>
+            <li>VS Code</li>
+            <li>Git</li>
+            <li>GitHub</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Core CS</h3>
+          <ul>
+            <li>OOP</li>
+            <li>Data Structures</li>
+            <li>Algorithms</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Currently Learning</h3>
+          <ul>
+            <li>SQL</li>
+            <li>Backend Development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning">
+    <div class="wrap">
+      <div class="eyebrow">LEARNING JOURNEY</div>
+      <h2>Progression, not perfection</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="tl-date">DONE</div>
+          <div class="tl-title">Python fundamentals</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">IN PROGRESS</div>
+          <div class="tl-title">Object-Oriented Programming</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">NEXT</div>
+          <div class="tl-title">Data Structures &amp; Algorithms</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">NEXT</div>
+          <div class="tl-title">Web Development</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">LATER</div>
+          <div class="tl-title">Backend / APIs</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">LATER</div>
+          <div class="tl-title">AI / ML</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">BUILDING IN PUBLIC</div>
+      <h2>Build log</h2>
+      <div>
+        <div class="log-item"><span class="log-date">MARCH 2026</span><span>Completed My 12th</span></div>
+        <div class="log-item"><span class="log-date">SEPT 2026</span><span class="placeholder">Started B.Tech CSE from
+            PVG's COET</span></div>
+        <div class="log-item"><span class="log-date">SEPT 2026</span><span class="placeholder">Achieved Mastery in Core
+            Python</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Let's build something.</h2>
+      <p>I'm currently open to learning opportunities, technical collaborations, and internship opportunities.</p>
+      <div class="contact-links">
+        <a href="mailto:pranavhingane999@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/pranav-hingane-352793404/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/pranavhingane" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div>Pranav Hingane — B.Tech CSE • Pune, India</div>
+    <div class="flinks">
+      <a href="[ADD GITHUB URL]">GitHub</a>
+      <a href="[ADD LINKEDIN URL]">LinkedIn</a>
+      <a href="mailto:[ADD EMAIL]">Email</a>
+    </div>
+    <div>© 2026 Pranav Hingane</div>
+  </footer>
+
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', function () {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+    // Resume placeholder: replace href with your hosted PDF link once added
+    ['resumeLink', 'resumeLinkMobile', 'resumeLinkHero'].forEach(id => {
+      var el = document.getElementById(id);
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        alert('Add your resume PDF link in the script or replace this button\\'s href with your resume URL.');
+      });
+    });
+
+    // Reveal on scroll
+    try {
+      var io = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }) }, { threshold: .1 });
+      document.querySelectorAll('section, .proj, .card').forEach(el => { el.classList.add('reveal'); io.observe(el); });
+    } catch (e) { }
+  </script>
+</body>
+
+</html>
